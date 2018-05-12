@@ -1,0 +1,24 @@
+﻿arq= fopen("log.txt", "a"); 
+fprintf(arq,"\n",); 
+fclose(arq); 
+
+
+
+Para operação de Saldo:
+data-hora-numconta-nome- “saldo verificado”
+
+
+
+
+Para operação de Saque:
+data-hora-numconta-nome- “saque efetuado”-valor
+
+
+
+Para operação de Depósito:
+data-hora-numconta-nome- “deposito efetuado”-valor
+
+
+
+Para operação de Transferência:
+data-hora-numcontacedente-nome-numcontadestino-nome-valor

@@ -1,0 +1,37 @@
+	int i, input;
+	
+	do{
+	//monta o cabecalho de informações 
+		system("cls");
+		for(i=0; i <= 50; i++){
+
+		if((i > 25) && (i < 27)){
+		printf("\n*       BANCO C        *\n");
+		printf("\n");
+		for(i=0; i <= 22; i++){
+		printf("*");
+		if(i == 22){
+		printf("*");
+		}
+		}
+		printf("\n* ( 1 ) SALDO          *");
+		printf("\n* ( 2 ) SAQUE          *");
+		printf("\n* ( 3 ) DEPOSITO       *");
+		printf("\n* ( 4 ) TRANSFERENCIA  *\n");
+		for(i=0; i <= 23; i++){
+		printf("*");
+		if(i == 26){
+		printf("\n");
+		}
+		}
+		scanf("%d", &input);
+
+	}
+	}
+		if(input==0){
+		return 0;
+	}
+	}while(input=!0||input>=3 );
+	return 0;
+
+}
