@@ -8,7 +8,7 @@
 
 struct Produto
 {
-	int Id;    /* código produto */ 
+	int Id;    /* cÃ³digo produto */ 
 	float precoProd;          /* preco produto */
 	char nome[50];       /* nome produto */
 };
@@ -36,7 +36,7 @@ int main (int argc, char *argv[])
 	CadProd busca, retNome;
 
 	do{
-	//monta o cabecalho de informações 
+	//monta o cabecalho de informaÃ§Ãµes 
 		system("cls");
 		printf("FABIANO DUTRA E CLEBER WEISHIMER - TRABALHO 4\n\n");
 		for(i=0; i <= 50; i++){
@@ -60,7 +60,7 @@ int main (int argc, char *argv[])
 		}
 		}
 		scanf("%d", &input);
-	// fim cabeçalho
+	// fim cabeÃ§alho
 
 	//CADASTRAR DE PRODUTOS---------------------------------
 		if(input == 1){
@@ -149,28 +149,28 @@ int Cadastrar(char nome[50], float preco){
 
 	int reg;
 	
-	//inicio de conferência do último registro para fazer +1 do último (se foi 10, vai ser 11) 
+	//inicio de conferÃªncia do Ãºltimo registro para fazer +1 do Ãºltimo (se foi 10, vai ser 11) 
 	
 	arq= fopen("dados.txt", "r+");
 	
 	if(arq == NULL){
-		arq= fopen("dados.txt", "a"); // cria txt, "r" só le e buga se nao existir
+		arq= fopen("dados.txt", "a"); // cria txt, "r" sÃ³ le e buga se nao existir
 		regc=0; //coloca Id 0 para somar com 1 e ficar o primeiro item 00001
 		fclose(arq);		
 	}
 	
 	//conferencia
 	else{
-		while (!feof(arq)) //le arquivo até o fim	
+		while (!feof(arq)) //le arquivo atÃ© o fim	
 			{
 				fscanf(arq,"%d %f %s",&regc, &precoc, &nomec); //0004 2.50 nome
-				reg=regc; //pega última variável inteira do txt
+				reg=regc; //pega Ãºltima variÃ¡vel inteira do txt
 			}
 			fclose(arq);
 	}
-	//fim conferência
+	//fim conferÃªncia
 	
-	reg+=1; //atribui +1 na última Id
+	reg+=1; //atribui +1 na Ãºltima Id
 	
 	arq= fopen("dados.txt", "a"); //o "a" faz ele escrever no final do arquivo, para isso a conferencia
 	
@@ -178,7 +178,7 @@ int Cadastrar(char nome[50], float preco){
 	
 	fclose(arq); //fecha arquivo
 	
-	return reg; //retorna o número da Id
+	return reg; //retorna o nÃºmero da Id
 }
 
 CadProd BuscarRef(int reg){
