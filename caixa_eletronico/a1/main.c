@@ -7,8 +7,8 @@
 struct conta
 {
 	char nome[50];
-	int nc; //5 dÌgitos
-	int senha; //6 dÌgitos
+	int nc; //5 d√≠gitos
+	int senha; //6 d√≠gitos
 	float saldo;
 	int sd; //saque diario
 	int lsd; //L imite de S aldo D iario
@@ -22,7 +22,7 @@ int ncdep, saldodep, saque, sd, lsd;
 int ncc, senha, dsenha; //na parte de quando pede num da conta e senha
 float saldo, vdep;
 char nome[50], nomedep[50];
-//int dec=0, decs=0, decd=0; //partes que da loop, tipo while
+//int dec=0, decs=0, decd=0; //partes de loop, como while
 int dec, decs, decd;
 
 int y;
@@ -37,9 +37,9 @@ dec=0;
 printf("\nDigite sua conta corrente: ");
 scanf("%d", &ncc);
 
-//AQUI, ELE LE O NUMERO DA CONTA E IMPORTA PARA VARIAVEIS PARA USAR UMA S” DAI
-//SEMPRE QUE EU QUISER O NOME, EU USO UMA VARIAVEL, E NAO FICO MUDANDO ENTRE AS CONTAS
-//S” ESCREVO nome E NAO CONTA[1] OU O NUMERO QUE FOR
+//AQUI, ELE L√ä O N√öMERO DA CONTA E IMPORTA PARA VARIAVEIS PARA USAR APENAS UMA
+//SEMPRE QUE QUISER O NOME, USAR UMA VARIAVEL, SEM NECESSIDADE DE FICAR MUDANDO ENTRE AS CONTAS
+//S√ì ESCREVER nome E NAO CONTA[1] OU O NUMERO QUE FOR
 if(ncc==conta[0].nc){
 	strcpy(nome,conta[0].nome);
 	saldo=conta[0].saldo;
@@ -139,11 +139,11 @@ void Saque(){
 		printf("(Notas de R$5.00, R$50.00 e R$100.00)\n(R$) ");
 		scanf("%d", &saque);
 		if (saque%5==0){
-			//COMO E VALOR DE NOTAS DE 100, 50 OU 5
-			//ELE DIVIDE POR 5 E SE O RESTO FOR 0, … DIVISÕVEL POR 5
+			//VALOR DE NOTAS DE 100, 50 OU 5
+			//ELE DIVIDE POR 5 E SE O RESTO FOR 0, √â DIVIS√çVEL POR 5
 			//ENTAO OS VALORES PODEM SER DADOS NO MINIMO NOTAS DE 5
-			//SE ELE DIGITAR "52 REAIS", NAO VAI DAR, PORQUE NAO DA PRA DIVIDIR POR 5
-			//E A MAQUINA NAO TEM NOTAS DE 2 - S” 5, 100 E 50
+			//SE ELE DIGITAR "52 REAIS", N√ÉO PODER√Å SACAR, POIS N√ÉO √â DIVISOR DE 5 - NOTAS DE 5 REAIS
+			//E A M√ÅQUINA NAO PERMITE NOTAS DE 2 - APENAS 5, 50 E 100
 			
 			if (saque>saldo){
 				printf("\nSaldo insuficiente para saque");	
@@ -151,7 +151,7 @@ void Saque(){
 			}
 			else if (saque>lsd){
 				printf("Seu saque nao pode ser maior que R$700.00 diarios\n");
-				printf("Voce pode sacar atÈ ***R$%d.00*** nas proximas 24 horas\n",lsd);
+				printf("Voce pode sacar at√© ***R$%d.00*** nas proximas 24 horas\n",lsd);
 				decs=1;
 				}
 			else{
@@ -159,8 +159,8 @@ void Saque(){
 				sleep(2);
 				
 				saldo=saldo-saque;
-				lsd=lsd-saque;//tu comeÁa com 700, aqui ele tira o que tu sacou dos 700
-				sd=sd-1;//tu comeÁa com limite 3, aqui diminui 1 cada vez que tu saca
+				lsd=lsd-saque;//come√ßa com 700 reais, aqui ele tira o que tu sacou dos 700
+				sd=sd-1;//come√ßa limite 3, decrementando cada vez que h√° saque
 				
 				//GRAVA NO ARQUIVO						
 				arq= fopen("log.txt", "a");
@@ -169,9 +169,9 @@ void Saque(){
 					
 				printf("\nDinheiro sacado com sucesso!\n");
 				
-				//SE BATER OS LIMITES, AVISA
+				//SE CHEGAR NO LIMITES DE SAQUE, AVISA
 				if(lsd==0||sd==0){
-					printf("%s, seu limite de saques foi atingido.\nVoce podera sacar novamente somente amanha apos as %s\n\n", nome,__TIME__);//TIME … PRA APARECER S” A HORA
+					printf("%s, seu limite de saques foi atingido.\nVoce podera sacar novamente somente amanha apos as %s\n\n", nome,__TIME__);//TIME √â PRA APARECER S√ì A HORA
 				}
 				else{
 				printf("%s, voce ainda pode realizar %d saques\nde no maximo R$%.2d nas proximas 24 horas\n\n",nome,sd,lsd);
@@ -179,10 +179,8 @@ void Saque(){
 				sleep(7);
 				printf("Saldo atual: \n\n********* R$ %.2f ********\n",saldo);
 				
-				//ESSE … PRA RETORNAR OS VALORES
+				//ESSE √â PRA RETORNAR OS VALORES
 				//O NOVO SALDO E NOVOS LIMITES
-				//TENHO QUE RETORNAR PRA ELES PORQUE SE EU FOR ABRIR DE OUTRO CARA E DE NOVO O QUE EU FIZ, NAO VAI MUDAR
-				//ELE JOGA DE VOLTA PRAS STRUCTS DO CARA OS VALORES DELE
 				if(ncc==conta[0].nc){
 				conta[0].saldo=saldo;
 				conta[0].sd=sd;
@@ -234,7 +232,7 @@ void Deposito(){
 	scanf("%f", &vdep);
 		printf("Digite o numero da conta o qual deseja depositar: ");
 	
-	//-------parte nova ----------------
+	
 		scanf("%d", &ncc);
 	
 		if(ncc==conta[0].nc){
@@ -274,7 +272,7 @@ void Deposito(){
 		scanf("%d", &decd);
 
 		if(decd==1){
-			printf("Procesando....");
+			printf("Processando....");
 			sleep(3);
 			saldo=saldo+vdep;
 			
@@ -326,11 +324,11 @@ void Transferencia(){
 		dec=0;
 		printf("Digite o numero da conta o qual deseja tranferir: ");
 		scanf("%d", &ncdep);
-		//AQUI PEGA OS DADAS DO CARA QUE VAI ENTRAR O DINHEIRO
-		//SE TU DEPOSITA DINEHIRO PRA MIM, ALEM DE SAIR DINHEIRO DA TUA CONTA
-		//ELE CALCULA QUANDO VAI ENTRAR NA MINHA			
+		//AQUI CAPTA OS DADOS DA CONTA QUE VAI ENTRAR O DINHEIRO
+		//SE USU√ÅRIO A DEPOSITA DINEHIRO PARA B, ALEM DE SAIR DINHEIRO DA A
+		//ELE CALCULA QUANDO VAI ENTRAR NA CONTA B			
 		if(ncdep==ncc){
-			printf("\n\nVoce nao fazer transferencia para sua prorpia conta\n\n");
+			printf("\n\nVoce nao fazer transferencia para sua propria conta\n\n");
 			sleep(3);
 			dec=1;
 		}
@@ -366,10 +364,10 @@ void Transferencia(){
 		printf("\nDigite 1 para confirmar ou 2 para cancelar\n");
 		scanf("%d", &decd);
 		if(decd==1){
-			printf("Procesando....");
+			printf("Processando....");
 			sleep(3);
-			saldodep=saldodep+vdep;//CALCULA O SALDO DO CARA QUE ****VAI ENTRAR**** DINHEIRO
-			saldo=saldo-vdep; //CALCULA O SALDO DO CARA QUE ****SAIU**** O DINHEIRO
+			saldodep=saldodep+vdep;//CALCULA O SALDO DA CONTA QUE ****CREDITADA****
+			saldo=saldo-vdep; //CALCULA O SALDO DA CONTA QUE ****DEBITADA****
 			
 			//GRAVA ARQUIVO
 			arq= fopen("log.txt", "a");
@@ -464,7 +462,7 @@ conta[3].saldo=0;
 conta[3].sd=3;
 conta[3].lsd=700;
 //Fim contas**********************************************
-//O X … S” PRA TER UMA VARIAVEL PRO LOOPING
+//O X √â S√ì PRA TER UMA VARIAVEL PRO LOOPING
 //DEPOIS QUE EU LIGO O CAIXA ELE NUNCA DESLIGA, VAI TA SEMPRE LIGADO
 int x, opcao;
 
