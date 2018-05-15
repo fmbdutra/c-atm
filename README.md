@@ -13,7 +13,7 @@ Prof. Me. Eng. Taciano Ares Rodolfo
 # ATM (Caixa eletrônico) em C
 
 
-Funções: Deposito, saldo, saque, transferênncia
+Funções: Depósito, saldo, saque, transferência
 
 Todas transações possuiem registro em .txt
 
