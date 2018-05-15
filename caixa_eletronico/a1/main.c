@@ -10,8 +10,8 @@ struct conta
 	int nc; //5 dígitos
 	int senha; //6 dígitos
 	float saldo;
-	int sd; //saque diario
-	int lsd; //L imite de S aldo D iario
+	int sd; //saque diario (3)
+	int lsd; //L imite de S aldo D iario (R$700)
 }conta[3];
 
 char s[64]; //pra colocar hora
@@ -30,16 +30,16 @@ int y;
 
 //----------------------------------------------------------------------------------
 
-void ConfereContas(){ //parte pra pedir conta e senha
+void ConfereContas(){ //FUNÇÃO PARA SOLICITAR NOME/CONTA E SENHA
 
 do{
 dec=0;	
 printf("\nDigite sua conta corrente: ");
 scanf("%d", &ncc);
 
-//AQUI, ELE LÊ O NÚMERO DA CONTA E IMPORTA PARA VARIAVEIS PARA USAR APENAS UMA
-//SEMPRE QUE QUISER O NOME, USAR UMA VARIAVEL, SEM NECESSIDADE DE FICAR MUDANDO ENTRE AS CONTAS
-//SÓ ESCREVER nome E NAO CONTA[1] OU O NUMERO QUE FOR
+//AQUI, ELE LÊ O NÚMERO DA CONTA E IMPORTA PARA VARIAVEIS PARA USAR APENAS UMA.
+//SEMPRE QUE QUISER O NOME, USARÁ UMA VARIAVEL, SEM NECESSIDADE DE FICAR MUDANDO ENTRE AS CONTAS.
+//SÓ ESCREVER O nome E "NAO CONTA[1]" OU O NUMERO
 if(ncc==conta[0].nc){
 	strcpy(nome,conta[0].nome);
 	saldo=conta[0].saldo;
@@ -123,8 +123,8 @@ void Saque(){
 	ConfereContas();
 
 	if(sd<=0||lsd<=0){
-	//SD - SAQUE DIARIO (ATE 3)
-	//LSD - LIMITE DE SAQUE DIARIO - 700 REAIS
+	//SD - "SAQUE DIARIO" LIMITE DE SAQUES DIÁRIO (ATE 3)
+	//LSD - LIMITE DE "SAQUE DIARIO" - 700 REAIS
 		printf("\nVoce ultrapassou o limite de saldo diario");
 	}
 	else if(saldo<=0){
@@ -140,8 +140,8 @@ void Saque(){
 		scanf("%d", &saque);
 		if (saque%5==0){
 			//VALOR DE NOTAS DE 100, 50 OU 5
-			//ELE DIVIDE POR 5 E SE O RESTO FOR 0, É DIVISÍVEL POR 5
-			//ENTAO OS VALORES PODEM SER DADOS NO MINIMO NOTAS DE 5
+			//DIVIDE POR 5 E SE O RESTO FOR 0, INDICA DIVISÍVEL POR 5
+			//ENTAO OS VALORES PODEM SER DADOS NO MINIMO EM NOTAS DE 5
 			//SE ELE DIGITAR "52 REAIS", NÃO PODERÁ SACAR, POIS NÃO É DIVISOR DE 5 - NOTAS DE 5 REAIS
 			//E A MÁQUINA NAO PERMITE NOTAS DE 2 - APENAS 5, 50 E 100
 			
@@ -169,7 +169,7 @@ void Saque(){
 					
 				printf("\nDinheiro sacado com sucesso!\n");
 				
-				//SE CHEGAR NO LIMITES DE SAQUE, AVISA
+				//AVISA AO CHEGAR AO LIMITE DE SAQUES
 				if(lsd==0||sd==0){
 					printf("%s, seu limite de saques foi atingido.\nVoce podera sacar novamente somente amanha apos as %s\n\n", nome,__TIME__);//TIME É PRA APARECER SÓ A HORA
 				}
@@ -324,9 +324,9 @@ void Transferencia(){
 		dec=0;
 		printf("Digite o numero da conta o qual deseja tranferir: ");
 		scanf("%d", &ncdep);
-		//AQUI CAPTA OS DADOS DA CONTA QUE VAI ENTRAR O DINHEIRO
-		//SE USUÁRIO A DEPOSITA DINEHIRO PARA B, ALEM DE SAIR DINHEIRO DA A
-		//ELE CALCULA QUANDO VAI ENTRAR NA CONTA B			
+		//AQUI CAPTA OS DADOS DA CONTA O QUAL ENTRARÁ O DINHEIRO
+		//SE USUÁRIO X DEPOSITA DINHEIRO PARA Y, ALEM DE SAIR DINHEIRO DA X
+		//ELE CALCULA QUANDO VAI ENTRAR NA CONTA Y			
 		if(ncdep==ncc){
 			printf("\n\nVoce nao fazer transferencia para sua propria conta\n\n");
 			sleep(3);
@@ -462,13 +462,13 @@ conta[3].saldo=0;
 conta[3].sd=3;
 conta[3].lsd=700;
 //Fim contas**********************************************
-//O X É SÓ PRA TER UMA VARIAVEL PRO LOOPING
-//DEPOIS QUE EU LIGO O CAIXA ELE NUNCA DESLIGA, VAI TA SEMPRE LIGADO
+//O X É APENAS PARA TER UMA VARIAVEL PARA O LOOPING
+//DEPOIS QUE LIGA O CAIXA, O MESMO NÃO DESLIGA, PERMANECERÁ
 int x, opcao;
 
 for(x=0;x==0;){
 
-//ESSAS COISAS SAO PRA HORA
+//ESSA BLOCO É PARA DEFINIR A HORA, TAMBÉM PARA O REGISTRO NO TXT
 time_t t = time(NULL);
 struct tm *tm = localtime(&t);
 strftime(s, sizeof(s), "%c", tm);
