@@ -18,8 +18,6 @@ Funções: Depósito, saldo, saque, transferência
 Todas transações possuiem registro em .txt
 
 
-Para testar executável - Saldo:
+Para testar executável -> Saldo:
 
-Conta: 12345 (Fabiano)
-
-Senha: 123456
+Conta: 12345 (Fabiano) - Senha: 123456
