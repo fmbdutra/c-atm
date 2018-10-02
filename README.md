@@ -5,7 +5,7 @@ Trabalho acadêmico
 
 Disciplina de Programação Básica
 
-Faculdade SENAI de Tecnologia Porto Alegre - 2017/1
+Faculdade de Tecnologia SENAI Porto Alegre - 2017/1
 
 Prof. Me. Eng. Taciano Ares Rodolfo
 
